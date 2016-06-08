@@ -1,0 +1,32 @@
+{
+  "name": "nodeplate",
+  "productName": "BajaSync UFABC",
+  "version": "1.0.0",
+  "description": "Node boilerplate for servers",
+  "repository": "https://github.com/ivanseidel/mean-boilerplate",
+  "README": "none",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "make test",
+    "build": "./node_modules/.bin/electron-packager . --platform=darwin --arch=all",
+    "start": "./node_modules/.bin/electron . index",
+    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/bower-installer"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "1.2.1",
+    "chalk": "^1.1.3",
+    "electron": "^0.4.1",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "bower": "latest",
+    "bower-installer": "latest",
+    "electron-packager": "^7.0.3",
+    "electron-prebuilt": "^1.2.1"
+  }
+}
