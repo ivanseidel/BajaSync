@@ -1,5 +1,5 @@
 'use strict';
-var TAG = 'config.electron';
+var TAG = _TAG('config.electron');
 
 // Wait electron to be ready
 var start = function (app, next){

@@ -1,9 +1,13 @@
 'use strict';
-var TAG = 'MainWindow';
+var TAG = _TAG('MainWindow');
 
 const BrowserWindow = electron.BrowserWindow
 
 let mainWindow = null
+
+exports.getWindow = function (){
+  return mainWindow;
+}
 
 exports.launch = function (){
   // Skip re-opening window on re-launch

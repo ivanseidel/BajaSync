@@ -1,20 +1,18 @@
-angular.module('Submenu', [
+angular.module('Panel', [
 
 ])
 
 // Manage windows
-.service('SubmenuService', function ($rootScope) {
-
+.service('PanelService', function ($rootScope) {
   var service = this;
-
-  service.submenus = [];
+  service.panels = [];
 
   // Subscribe for changes
   service.subscribe = function (scope, callback){
     if(!scope || !callback)
       return console.error('Cannot subscribe with invalid scope and callback!');
 
-    var handler = $rootScope.$on('SubmenuService:update', callback);
+    var handler = $rootScope.$on('PanelService:update', callback);
     scope.$on('$destroy', handler);
   }
 
@@ -27,26 +25,40 @@ angular.module('Submenu', [
     menu.open = menu.open || false;
 
     // Check if window is already included
-    if(service.submenus.indexOf(menu) >= 0)
+    if(service.panels.indexOf(menu) >= 0)
       return;
 
     // Append window
-    service.submenus.push(menu);
+    service.panels.push(menu);
 
-    $rootScope.$emit('SubmenuService:update');
+    $rootScope.$emit('PanelService:update');
   }
 
   // Close a window
   service.close = function (win){
     // Check if window exists
-    var idx = service.submenus.indexOf(menu)
+    var idx = service.panels.indexOf(menu)
     if(idx < 0)
       return;
 
     // Remove element from the list
-    service.submenus.splice(idx, 1);
+    service.panels.splice(idx, 1);
 
-    $rootScope.$emit('SubmenuService:update');
+    $rootScope.$emit('PanelService:update');
   }
+})
 
+.controller('PanelCtrl', function ($scope, PanelService) {
+
+  console.log('PanelCtrl');
+
+  $scope.panels = null;
+
+  PanelService.subscribe($scope, updatePanels)
+
+  updatePanels();
+
+  function updatePanels(){
+    $scope.panels = PanelService.panels;
+  }
 })

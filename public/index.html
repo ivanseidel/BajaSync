@@ -58,7 +58,8 @@
         </md-toolbar-filler>
 
         <!-- Menu Bar -->
-        <md-menu-bar ng-include="'views/dashboard.menu.html'"></md-menu-bar>
+        <md-menu-bar ng-include="'views/dashboard.menu.html'">
+        </md-menu-bar>
 
         <span flex></span>
 
@@ -75,12 +76,27 @@
     <div layout="row" flex>
 
       <!-- Window area -->
-      <md-content class="window-area" flex
-        ng-include="'views/dashboard.windows.html'"></md-content>
+      <div class="window-area" ng-controller="WindowCtrl" layout="column" ng-cloak flex
+        layout-fill>
+
+        <md-tabs md-border-bottom md-autoselect layout-fill>
+          <md-tab layout-fill ng-click="open(win)"
+            md-selected="selectedWindow" 
+            ng-repeat="win in windows track by _windowId(win)"
+             label="{{win.name + ' : ' + win.userData.name}}">
+            <div ng-include="win.template" layout="column" flex
+              style="position: relative;" layout-fill>
+            </div>
+          </md-tab>
+        </md-tabs>
+
+
+      </div>
+
 
       <!-- Sub-menu area -->
-      <md-content class="sub-menu" ng-controller="SubmenuCtrl"
-        ng-include="'views/dashboard.submenus.html'"></md-content>
+      <md-content class="sub-menu" ng-controller="PanelCtrl"
+        ng-include="'views/dashboard.panels.html'"></md-content>
     </div>
 
     <!-- Status bar -->
@@ -94,14 +110,14 @@
   <!-- <div ui-view class="fx-fade-up fx-speed-800"></div> -->
 
   <!-- Vendor -->
-  <!-- <script src="components/jquery/jquery.js"></script> -->
   <script type="text/javascript">
+    // jQuery Needs to be loaded like this in Electron to become global
     window.$ = window.jQuery = require('./components/jquery/jquery.min.js');
   </script>
   <script src="components/angular/angular.js"></script>
   <script src="components/gsap/TweenMax.js"></script>
   <script src="components/underscore/underscore.js"></script>
-  <script src="components-custom/three.min.js"></script>
+  <script src="components/three.js/three.min.js"></script>
 
   <!-- Libraries -->
   <script src="components/angular-aria/angular-aria.js"></script>
@@ -110,12 +126,21 @@
   <script src="components/angular-ui-router/angular-ui-router.js"></script>
   <script src="components/ngFx/ngFx.js"></script>
 
-  <!-- App Specific -->
-  <script src="scripts/App.js"></script>
-  <script src="scripts/Window.js"></script>
-  <script src="scripts/Submenu.js"></script>
+  <!-- App Commons -->
+  <script src="scripts/Loader.js"></script>
+  <script src="scripts/loaders/VRMLLoader.js"></script>
+  <script src="scripts/controls/MouseControls.js"></script>
+  <script src="scripts/controls/OrbitControls.js"></script>
 
-  <script src="scripts/Baja.js"></script>
+  <!-- App Specific -->
+  <script src="app/App.js"></script>
+  <script src="app/Panel.js"></script>
+  <script src="app/Window.js"></script>
+  <script src="app/Common.js"></script>
+  <script src="app/3DSetupHelper.js"></script>
+  <script src="app/GenericFileModel.js"></script>
+
+  <script src="app/Baja.Partes.js"></script>
   <!-- <script src="/scripts/Auth.js"></script> -->
   <!-- <script src="/scripts/MatriculaHelper.js"></script> -->
   <!-- <script src="/scripts/SearchBar.js"></script> -->

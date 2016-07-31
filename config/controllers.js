@@ -1,5 +1,5 @@
 'use strict';
-var TAG = 'config.controllers';
+var TAG = _TAG('config.controllers');
 
 function config(app, next){
 	var controllersDirectory = __dirname + '/..' + '/controllers/';

@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "angular": "^1.5.6",
-    "angular-material": "^1.0.9",
+    "angular-material": "1.1.0-rc4-master-f9738f5",
     "jquery": "^2.2.4",
     "gsap": "^1.18.5",
     "underscore": "^1.8.3",
@@ -24,15 +24,19 @@
     "angular-ui-router": "^0.3.1",
     "ngFx": "^1.1.0",
     "mdi": "^1.6.50",
-    "three.js": "^0.76.0"
+    "three.js": "threejs#*"
   },
   "install": {
     "path": "public/components",
     "sources": {
       "jquery": {
         "mapping": [
-          {"public/_components/jquery/dist/jquery.min.js": "jquery.min.js"},
-          {"public/_components/jquery/dist/jquery.min.map": "jquery.min.map"}
+          {
+            "public/_components/jquery/dist/jquery.min.js": "jquery.min.js"
+          },
+          {
+            "public/_components/jquery/dist/jquery.min.map": "jquery.min.map"
+          }
         ]
       },
       "mdi": {

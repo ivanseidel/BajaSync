@@ -1,5 +1,5 @@
 'use strict';
-var TAG = 'App';
+var TAG = _TAG('App');
 
 var electron = require('electron')
 
@@ -18,6 +18,12 @@ exports.init = function (){
 
   // Open MainWindow on Activate
   eApp.on('activate', app.controllers.MainWindow.launch)
+
+  // Initialize Settings
+  app.controllers.Settings.init();
+
+  // Initialize GenericFileModel
+  app.controllers.GenericFileModel.init();
 
   // By Default, open Main Window on init
   app.controllers.MainWindow.launch();

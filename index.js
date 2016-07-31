@@ -22,6 +22,9 @@ global._ = require('lodash');
 global.chalk = require('chalk');
 global.electron = require('electron');
 global.eApp = global.electron.app;
+global._TAG = function (tag){
+  return chalk.red(`[${tag}]`);
+}
 
 /*
  * Bootstrap Process
@@ -61,5 +64,5 @@ async.eachSeries(configSetps, function (config, next){
   // Launch app
   //
   app.controllers.App.init();
-  
+
 });

@@ -1,5 +1,5 @@
 'use strict';
-var TAG = 'config.helpers';
+var TAG = _TAG('config.helpers');
 
 var fs = require('fs');
 var path = require('path');

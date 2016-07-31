@@ -1,9 +1,0 @@
-<div ng-controller="WindowCtrl" class="sample" layout="column" ng-cloak layout-fill>
-  <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect layout-fill>
-    <md-tab ng-repeat="win in windows" label="{{::win.name}}">
-
-      <div ng-include="::win.template" layout-fill></div>
-
-    </md-tab>
-  </md-tabs>
-</div>

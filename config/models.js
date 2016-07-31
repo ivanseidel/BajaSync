@@ -1,5 +1,5 @@
 'use strict';
-var TAG = 'config.models';
+var TAG = _TAG('config.models');
 
 // Load instantly, so that files can access models directly on root scope
 var modelsDirectory = __dirname + '/..' + '/models/';
